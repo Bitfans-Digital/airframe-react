@@ -97,7 +97,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
-                    ExtractCssChunks.loader,
+                    {
+                        loader: ExtractCssChunks.loader,
+                        options: {
+                            hmr: true,
+                        },
+                    },
                     'css-loader',
                     'postcss-loader',
                     {
