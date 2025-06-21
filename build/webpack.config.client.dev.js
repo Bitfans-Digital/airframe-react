@@ -10,7 +10,7 @@ var BASE_PATH = process.env.BASE_PATH || '/';
 
 module.exports = {
     name: 'client',
-    devtool: 'cheap-eval-source-map',
+    devtool: 'eval-cheap-source-map',
     target: 'web',
     mode: 'development',
     entry: {
@@ -48,9 +48,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
+                loader: 'babel-loader',
                 exclude: /node_modules/,
-                use: 'babel-loader',
+                include: /app/,
+            },
+            {
+                test: /\.(js|jsx)$/,
+                use: 'react-hot-loader/webpack',
+                include: /node_modules/,
             },
             // Modular Styles
             {
@@ -117,6 +123,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: 'fonts/[name].[ext]',
+                    esModule: false,
                 },
             },
             // Files
@@ -125,6 +132,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: 'static/[name].[ext]',
+                    esModule: false,
                 },
             },
         ],
