@@ -36,12 +36,12 @@ export class VersionSelector extends React.Component {
     async fetchVersions() {
         const { dashboard } = this.props;
         let versions;
-        try {
-            versions = await fetch(`${SERVICE_URL}/dashboards/versions`)
-                .then(response => response.json());
-        } catch(exc) {
+        // try {
+        //     versions = await fetch(`${SERVICE_URL}/dashboards/versions`)
+        //         .then(response => response.json());
+        // } catch(exc) {
             this.setState({ isError: true })
-        }
+        // }
         const targetVersions = _.filter(versions, { dashboardName: dashboard });
         
         this.setState({ versions: targetVersions });
