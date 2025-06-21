@@ -7,7 +7,7 @@ import {
     Droppable,
     Draggable
 } from 'react-beautiful-dnd';
-import uid from 'uuid/v4';
+import { v4 as uid } from 'uuid';
 import {
     Card,
     CardHeader,
