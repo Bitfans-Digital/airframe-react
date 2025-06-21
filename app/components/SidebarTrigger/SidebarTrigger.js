@@ -7,7 +7,11 @@ const SidebarTrigger = (props) => {
     const { tag: Tag, pageConfig, ...otherProps } = props;
     return (
         <Tag
-            onClick={ () => { props.pageConfig.toggleSidebar(); return false; } }
+            onClick={(e) => {
+                e.preventDefault();
+                props.pageConfig.toggleSidebar();
+                return false;
+            }}
             active={ Tag !== 'a' ? !pageConfig.sidebarCollapsed : undefined }
             { ...otherProps }
         >
