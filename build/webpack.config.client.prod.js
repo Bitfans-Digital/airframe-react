@@ -1,7 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
+var ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var TerserPlugin = require('terser-webpack-plugin');
 var CircularDependencyPlugin = require('circular-dependency-plugin');
@@ -14,19 +14,16 @@ module.exports = {
     devtool: 'inline-source-map',
     mode: 'production',
     entry: {
-        app: ['react-hot-loader/patch', path.join(config.srcDir, 'index.js')]
+        app: ['react-hot-loader/patch', path.join(config.srcDir, 'index.js')],
     },
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].chunk.js',
         path: config.distDir,
-        publicPath: BASE_PATH
+        publicPath: BASE_PATH,
     },
     resolve: {
-        modules: [
-            'node_modules',
-            config.srcDir
-        ]
+        modules: ['node_modules', config.srcDir],
     },
     plugins: [
         new CircularDependencyPlugin({
@@ -37,7 +34,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: config.srcHtmlLayout,
-            inject: false
+            inject: false,
         }),
         new webpack.HashedModuleIdsPlugin(),
         new ExtractCssChunks(),
@@ -45,10 +42,10 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
             'process.env.BASE_PATH': JSON.stringify(BASE_PATH),
-        })
+        }),
     ],
     optimization: {
-        minimizer: [new TerserPlugin()]
+        minimizer: [new TerserPlugin()],
     },
     module: {
         rules: [
@@ -56,24 +53,24 @@ module.exports = {
                 test: /\.js$/,
                 include: config.srcDir,
                 exclude: /node_modules/,
-                use: 'babel-loader'
+                use: 'babel-loader',
             },
             // Modular Styles
             {
                 test: /\.css$/,
                 use: [
                     ExtractCssChunks.loader,
-                    { 
+                    {
                         loader: 'css-loader',
                         options: {
                             modules: true,
                             importLoaders: 1,
-                        }
+                        },
                     },
-                    { loader: 'postcss-loader' }
+                    { loader: 'postcss-loader' },
                 ],
                 exclude: [path.resolve(config.srcDir, 'styles')],
-                include: [config.srcDir]
+                include: [config.srcDir],
             },
             {
                 test: /\.scss$/,
@@ -84,74 +81,70 @@ module.exports = {
                         options: {
                             modules: true,
                             importLoaders: 1,
-                        }
+                        },
                     },
                     { loader: 'postcss-loader' },
                     {
                         loader: 'sass-loader',
                         options: {
                             sassOptions: {
-                                includePaths: config.scssIncludes
-                            }
-                        }
-                    }
+                                includePaths: config.scssIncludes,
+                            },
+                        },
+                    },
                 ],
                 exclude: [path.resolve(config.srcDir, 'styles')],
-                include: [config.srcDir]
+                include: [config.srcDir],
             },
             // Global Styles
             {
                 test: /\.css$/,
-                use: [
-                    ExtractCssChunks.loader,
-                    { loader: 'css-loader' },
-                    { loader: 'postcss-loader' }
-                ],
-                include: [path.resolve(config.srcDir, 'styles')]
+                use: [ExtractCssChunks.loader, { loader: 'css-loader' }, { loader: 'postcss-loader' }],
+                include: [path.resolve(config.srcDir, 'styles')],
             },
             {
                 test: /\.scss$/,
                 use: [
                     ExtractCssChunks.loader,
-                    { loader: 'css-loader' }, 
-                    { loader: 'postcss-loader' }, 
+                    { loader: 'css-loader' },
+                    { loader: 'postcss-loader' },
                     {
                         loader: 'sass-loader',
                         options: {
                             sassOptions: {
-                                includePaths: config.scssIncludes
-                            }
-                        }
-                    }
+                                includePaths: config.scssIncludes,
+                            },
+                        },
+                    },
                 ],
-                include: [path.resolve(config.srcDir, 'styles')]
+                include: [path.resolve(config.srcDir, 'styles')],
             },
             // Fonts
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                    name: "fonts/[name].[ext]",
-                }
+                    name: 'fonts/[name].[ext]',
+                },
             },
             // Files
             {
                 test: /\.(jpg|jpeg|png|gif|svg|ico)$/,
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                    name: "static/[name].[ext]",
-                }
-            }
-        ]
+                    name: 'static/[name].[ext]',
+                },
+            },
+        ],
     },
     devServer: {
         hot: false,
         contentBase: config.distDir,
         compress: true,
         historyApiFallback: {
-            index: '/'
+            index: '/',
         },
         host: '0.0.0.0',
-        port: 4100
-    }
-}
+        port: 4100,
+    },
+};
