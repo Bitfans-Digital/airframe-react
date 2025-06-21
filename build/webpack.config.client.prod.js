@@ -48,14 +48,6 @@ module.exports = {
         new OptimizeCssAssetsPlugin(),
 
         new CompressionPlugin({
-            filename: '[path][base].gz',
-            algorithm: 'gzip',
-            test: /\.js$|\.css$/,
-            threshold: 5120,
-            minRatio: 0.8,
-        }),
-
-        new CompressionPlugin({
             filename: '[path][base].br',
             algorithm: 'brotliCompress',
             test: /\.(js|css)$/,
