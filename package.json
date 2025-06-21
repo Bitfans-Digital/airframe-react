@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "@loadable/component": "^5.16.7",
     "@owczar/dashboard-style--airframe": "^0.2.2",
     "ag-grid-community": "^21.0.1",
     "ag-grid-react": "^21.0.1",
