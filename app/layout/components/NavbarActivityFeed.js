@@ -65,7 +65,7 @@ const NavbarActivityFeed = (props) => (
                   <span className="h6">
                     {faker.person.firstName()} {faker.person.lastName()}
                   </span>{" "}
-                  changed Description to &quot;{faker.random.words()}&quot;
+                  changed Description to &quot;{faker.lorem.words()}&quot;
                   <p className="mt-2 mb-1">{faker.lorem.sentence()}</p>
                   <div className="small mt-2">
                     {faker.date.past().toString()}
