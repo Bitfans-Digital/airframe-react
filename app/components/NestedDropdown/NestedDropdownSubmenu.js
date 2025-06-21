@@ -1,13 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import uuid from 'uuid/v4';
+import { v4 as uid } from 'uuid';
 
 import { Consumer } from './context';
 
 class NestedDropdownSubmenu extends React.Component {
     componentDidMount() {
-        this.id = uuid();
+        this.id = uid();
     }
 
     render() {
@@ -28,9 +28,9 @@ class NestedDropdownSubmenu extends React.Component {
         return (
             <Tag className={ itemClass }>
                 <a
-                    href="javascript:;"
+                    href="#"
                     className={ linkClass }
-                    onClick={ () => { onOpen(this.id) } }
+                    onClick={ (e) => { e.preventDefault(); onOpen(this.id) } }
                 >
                     { title }
                 </a>

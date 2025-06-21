@@ -1,5 +1,5 @@
 import React from "react";
-import v4 from "uuid/v4";
+import { v4 as uid } from 'uuid';
 import _ from "lodash";
 import { faker } from "@faker-js/faker";
 
@@ -192,7 +192,7 @@ export class DragAndDropLayout extends React.Component {
         availableRow -= newCol;
         output = {
           ...output,
-          [v4()]: { md: newCol, h: HEIGHT },
+          [uid()]: { md: newCol, h: HEIGHT },
         };
       }
     }

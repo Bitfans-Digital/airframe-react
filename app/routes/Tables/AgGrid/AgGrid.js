@@ -143,7 +143,7 @@ class SkillFilter {
             const eFilter = document.createElement("a");
             eFilter.className = "dropdown-item d-flex align-items-center"
             //eFilter.classList.toggle("active", this.model[skill]);
-            eFilter.href="javascript:;";
+            eFilter.href="#";
 
             const eImg = document.createElement("img");
             eImg.src = '//www.ag-grid.com/images/skills/' + skill + '.png';
@@ -163,6 +163,7 @@ class SkillFilter {
             eGui.appendChild(eFilter);
 
             eFilter.addEventListener("click", (e) => {
+                e.preventDefault();
                 const element = e.currentTarget;
                 this.model[skill] = !this.model[skill];
                 this.filterChangedCallback();
@@ -228,12 +229,13 @@ class ProficiencyFilter {
             const eFilter = document.createElement("a");
             eFilter.className = "dropdown-item"
             eFilter.classList.toggle("active", PROFICIENCY_VALUES[index] === this.selected);
-            eFilter.href="javascript:;";
+            eFilter.href="#";
             eFilter.innerText = name;
             
             eGui.appendChild(eFilter);
 
             eFilter.addEventListener("click", (e) => {
+                e.preventDefault();
                 const element = e.currentTarget;
                 element.parentElement.childNodes.forEach(function(node) {
                     node.classList.toggle('active', false);
