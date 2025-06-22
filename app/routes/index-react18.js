@@ -1,34 +1,28 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
-// ----------- Pages Imports ---------------
 import Monitor from './Dashboards/Monitor/Monitor-react18';
 
-// ----------- Layout Imports ---------------
-
-// Routes configuration array
 const routes = [
     // Dashboard Routes
-    { path: '/dashboards/monitor', component: Monitor, exact: true },
+    {
+        path: '/dashboards/monitor',
+        component: <Monitor />,
+        componentPath: './Dashboards/Monitor/Monitor-react18',
+        exact: true,
+    },
 ];
 
-//------ Route Definitions --------
-// eslint-disable-next-line no-unused-vars
 export const RoutedContent = () => {
     return (
-        <Switch>
-            <Redirect from="/" to="/dashboards/monitor" exact />
+        <Routes>
+            <Route path="/" element={<Navigate to="/dashboards/monitor" replace />} />
 
             {routes.map((route, index) => (
-                <Route
-                    key={index}
-                    path={route.path}
-                    component={route.component}
-                    {...(route.exact && { exact: route.exact })}
-                />
+                <Route key={index} path={route.path} element={route.component} />
             ))}
 
-            <Redirect to="/pages/error-404" />
-        </Switch>
+            <Route path="*" element={<Navigate to="/pages/error-404" replace />} />
+        </Routes>
     );
 };
