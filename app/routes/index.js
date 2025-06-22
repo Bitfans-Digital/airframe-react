@@ -1,69 +1,65 @@
 import React from 'react';
-import {
-    Route,
-    Switch,
-    Redirect
-} from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 
 // ----------- Pages Imports ---------------
 import Analytics from './Dashboards/Analytics';
-import ProjectsDashboard from './Dashboards/Projects';
-import System from './Dashboards/System';
-import Monitor from './Dashboards/Monitor'; 
 import Financial from './Dashboards/Financial';
-import Stock from './Dashboards/Stock';
+import Monitor from './Dashboards/Monitor';
+import ProjectsDashboard from './Dashboards/Projects';
 import Reports from './Dashboards/Reports';
+import Stock from './Dashboards/Stock';
+import System from './Dashboards/System';
 
 import Widgets from './Widgets';
 
 import Cards from './Cards/Cards';
 import CardsHeaders from './Cards/CardsHeaders';
 
-import NavbarOnly from './Layouts/NavbarOnly';
-import SidebarDefault from './Layouts/SidebarDefault';
-import SidebarA from './Layouts/SidebarA';
 import DragAndDropLayout from './Layouts/DragAndDropLayout';
+import NavbarOnly from './Layouts/NavbarOnly';
+import SidebarA from './Layouts/SidebarA';
+import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarWithNavbar from './Layouts/SidebarWithNavbar';
 
+import ReCharts from './Graphs/ReCharts';
 import Accordions from './Interface/Accordions';
 import Alerts from './Interface/Alerts';
 import Avatars from './Interface/Avatars';
 import BadgesLabels from './Interface/BadgesLabels';
 import Breadcrumbs from './Interface/Breadcrumbs';
 import Buttons from './Interface/Buttons';
+import Calendar from './Interface/Calendar';
 import Colors from './Interface/Colors';
+import CropImage from './Interface/CropImage';
+import DragAndDropElements from './Interface/DragAndDropElements';
 import Dropdowns from './Interface/Dropdowns';
 import Images from './Interface/Images';
 import ListGroups from './Interface/ListGroups';
 import MediaObjects from './Interface/MediaObjects';
 import Modals from './Interface/Modals';
 import Navbars from './Interface/Navbars';
+import Notifications from './Interface/Notifications';
 import Paginations from './Interface/Paginations';
 import ProgressBars from './Interface/ProgressBars';
 import TabsPills from './Interface/TabsPills';
 import TooltipPopovers from './Interface/TooltipsPopovers';
 import Typography from './Interface/Typography';
-import Notifications from './Interface/Notifications';
-import CropImage from './Interface/CropImage';
-import DragAndDropElements from './Interface/DragAndDropElements';
-import Calendar from './Interface/Calendar';
-import ReCharts from './Graphs/ReCharts';
 
+import DatePicker from './Forms/DatePicker';
+import Dropzone from './Forms/Dropzone';
+import Editor from './Forms/Editor';
 import Forms from './Forms/Forms';
 import FormsLayouts from './Forms/FormsLayouts';
 import InputGroups from './Forms/InputGroups';
-import Wizard from './Forms/Wizard';
-import TextMask from './Forms/TextMask';
-import Typeahead from './Forms/Typeahead';
-import Toggles from './Forms/Toggles';
-import Editor from './Forms/Editor';
-import DatePicker from './Forms/DatePicker';
-import Dropzone from './Forms/Dropzone';
 import Sliders from './Forms/Sliders';
+import TextMask from './Forms/TextMask';
+import Toggles from './Forms/Toggles';
+import Typeahead from './Forms/Typeahead';
+import Wizard from './Forms/Wizard';
 
-import Tables from './Tables/Tables';
-import ExtendedTable from './Tables/ExtendedTable';
 import AgGrid from './Tables/AgGrid';
+import ExtendedTable from './Tables/ExtendedTable';
+import Tables from './Tables/Tables';
 
 import AccountEdit from './Apps/AccountEdit';
 import BillingEdit from './Apps/BillingEdit';
@@ -109,161 +105,157 @@ import { DefaultSidebar } from './../layout/components/DefaultSidebar';
 import { SidebarANavbar } from './../layout/components/SidebarANavbar';
 import { SidebarASidebar } from './../layout/components/SidebarASidebar';
 
+// Routes configuration array
+const routes = [
+    // Dashboard Routes
+    { path: '/dashboards/analytics', component: Analytics, exact: true },
+    { path: '/dashboards/projects', component: ProjectsDashboard, exact: true },
+    { path: '/dashboards/system', component: System, exact: true },
+    { path: '/dashboards/monitor', component: Monitor, exact: true },
+    { path: '/dashboards/financial', component: Financial, exact: true },
+    { path: '/dashboards/stock', component: Stock, exact: true },
+    { path: '/dashboards/reports', component: Reports, exact: true },
+
+    // Widgets Route
+    { path: '/widgets', component: Widgets, exact: true },
+
+    // Cards Routes
+    { path: '/cards/cards', component: Cards, exact: true },
+    { path: '/cards/cardsheaders', component: CardsHeaders, exact: true },
+
+    // Layouts Routes
+    { path: '/layouts/navbar', component: NavbarOnly },
+    { path: '/layouts/sidebar', component: SidebarDefault },
+    { path: '/layouts/sidebar-a', component: SidebarA },
+    { path: '/layouts/sidebar-with-navbar', component: SidebarWithNavbar },
+    { path: '/layouts/dnd-layout', component: DragAndDropLayout },
+
+    // Interface Routes
+    { path: '/interface/accordions', component: Accordions },
+    { path: '/interface/alerts', component: Alerts },
+    { path: '/interface/avatars', component: Avatars },
+    { path: '/interface/badges-and-labels', component: BadgesLabels },
+    { path: '/interface/breadcrumbs', component: Breadcrumbs },
+    { path: '/interface/buttons', component: Buttons },
+    { path: '/interface/colors', component: Colors },
+    { path: '/interface/dropdowns', component: Dropdowns },
+    { path: '/interface/images', component: Images },
+    { path: '/interface/list-groups', component: ListGroups },
+    { path: '/interface/media-objects', component: MediaObjects },
+    { path: '/interface/modals', component: Modals },
+    { path: '/interface/navbars', component: Navbars },
+    { path: '/interface/paginations', component: Paginations },
+    { path: '/interface/progress-bars', component: ProgressBars },
+    { path: '/interface/tabs-pills', component: TabsPills },
+    { path: '/interface/tooltips-and-popovers', component: TooltipPopovers },
+    { path: '/interface/typography', component: Typography },
+    { path: '/interface/notifications', component: Notifications },
+    { path: '/interface/crop-image', component: CropImage },
+    { path: '/interface/drag-and-drop-elements', component: DragAndDropElements },
+    { path: '/interface/calendar', component: Calendar },
+
+    // Forms Routes
+    { path: '/forms/forms', component: Forms },
+    { path: '/forms/forms-layouts', component: FormsLayouts },
+    { path: '/forms/input-groups', component: InputGroups },
+    { path: '/forms/wizard', component: Wizard },
+    { path: '/forms/text-mask', component: TextMask },
+    { path: '/forms/typeahead', component: Typeahead },
+    { path: '/forms/toggles', component: Toggles },
+    { path: '/forms/editor', component: Editor },
+    { path: '/forms/date-picker', component: DatePicker },
+    { path: '/forms/dropzone', component: Dropzone },
+    { path: '/forms/sliders', component: Sliders },
+
+    // Graphs Routes
+    { path: '/graphs/re-charts', component: ReCharts },
+
+    // Tables Routes
+    { path: '/tables/tables', component: Tables },
+    { path: '/tables/extended-table', component: ExtendedTable },
+    { path: '/tables/ag-grid', component: AgGrid },
+
+    // Apps Routes
+    { path: '/apps/account-edit', component: AccountEdit },
+    { path: '/apps/billing-edit', component: BillingEdit },
+    { path: '/apps/chat', component: Chat },
+    { path: '/apps/clients', component: Clients },
+    { path: '/apps/email-details', component: EmailDetails },
+    { path: '/apps/files/:type', component: Files },
+    { path: '/apps/gallery-grid', component: GalleryGrid },
+    { path: '/apps/gallery-table', component: GalleryTable },
+    { path: '/apps/images-results', component: ImagesResults },
+    { path: '/apps/inbox', component: Inbox },
+    { path: '/apps/new-email', component: NewEmail },
+    { path: '/apps/profile-details', component: ProfileDetails },
+    { path: '/apps/profile-edit', component: ProfileEdit },
+    { path: '/apps/projects/:type', component: Projects },
+    { path: '/apps/search-results', component: SearchResults },
+    { path: '/apps/sessions-edit', component: SessionsEdit },
+    { path: '/apps/settings-edit', component: SettingsEdit },
+    { path: '/apps/tasks/:type', component: Tasks },
+    { path: '/apps/task-details', component: TasksDetails },
+    { path: '/apps/tasks-kanban', component: TasksKanban },
+    { path: '/apps/users/:type', component: Users },
+    { path: '/apps/users-results', component: UsersResults },
+    { path: '/apps/videos-results', component: VideosResults },
+
+    // Pages Routes
+    { path: '/pages/coming-soon', component: ComingSoon },
+    { path: '/pages/confirmation', component: Confirmation },
+    { path: '/pages/danger', component: Danger },
+    { path: '/pages/error-404', component: Error404 },
+    { path: '/pages/forgot-password', component: ForgotPassword },
+    { path: '/pages/lock-screen', component: LockScreen },
+    { path: '/pages/login', component: Login },
+    { path: '/pages/register', component: Register },
+    { path: '/pages/success', component: Success },
+    { path: '/pages/timeline', component: Timeline },
+
+    // Icons Route
+    { path: '/icons', component: Icons, exact: true },
+];
+
 //------ Route Definitions --------
 // eslint-disable-next-line no-unused-vars
 export const RoutedContent = () => {
     return (
         <Switch>
             <Redirect from="/" to="/dashboards/projects" exact />
-            
-            <Route path="/dashboards/analytics" exact component={Analytics} />
-            <Route path="/dashboards/projects" exact component={ProjectsDashboard} />
-            <Route path="/dashboards/system" exact component={System} />
-            <Route path="/dashboards/monitor" exact component={Monitor} />
-            <Route path="/dashboards/financial" exact component={Financial} />
-            <Route path="/dashboards/stock" exact component={Stock} />
-            <Route path="/dashboards/reports" exact component={Reports} />
 
-            <Route path='/widgets' exact component={Widgets} />
-            
-            { /*    Cards Routes     */ }
-            <Route path='/cards/cards' exact component={Cards} />
-            <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
-            
-            { /*    Layouts     */ }
-            <Route path='/layouts/navbar' component={NavbarOnly} />
-            <Route path='/layouts/sidebar' component={SidebarDefault} />
-            <Route path='/layouts/sidebar-a' component={SidebarA} />
-            <Route path="/layouts/sidebar-with-navbar" component={SidebarWithNavbar} />
-            <Route path='/layouts/dnd-layout' component={DragAndDropLayout} />
+            {routes.map((route, index) => (
+                <Route
+                    key={index}
+                    path={route.path}
+                    component={route.component}
+                    {...(route.exact && { exact: route.exact })}
+                />
+            ))}
 
-            { /*    Interface Routes   */ }
-            <Route component={ Accordions } path="/interface/accordions" />
-            <Route component={ Alerts } path="/interface/alerts" />
-            <Route component={ Avatars } path="/interface/avatars" />
-            <Route component={ BadgesLabels } path="/interface/badges-and-labels" />
-            <Route component={ Breadcrumbs } path="/interface/breadcrumbs" />
-            <Route component={ Buttons } path="/interface/buttons" />
-            <Route component={ Colors } path="/interface/colors" />
-            <Route component={ Dropdowns } path="/interface/dropdowns" />
-            <Route component={ Images } path="/interface/images" />
-            <Route component={ ListGroups } path="/interface/list-groups" />
-            <Route component={ MediaObjects } path="/interface/media-objects" />
-            <Route component={ Modals } path="/interface/modals" />
-            <Route component={ Navbars } path="/interface/navbars" />
-            <Route component={ Paginations } path="/interface/paginations" />
-            <Route component={ ProgressBars } path="/interface/progress-bars" />
-            <Route component={ TabsPills } path="/interface/tabs-pills" />
-            <Route component={ TooltipPopovers } path="/interface/tooltips-and-popovers" />
-            <Route component={ Typography } path="/interface/typography" />
-            <Route component={ Notifications } path="/interface/notifications" />
-            <Route component={ CropImage } path="/interface/crop-image" />
-            <Route component={ DragAndDropElements } path="/interface/drag-and-drop-elements" />
-            <Route component={ Calendar } path="/interface/calendar" />
-
-            { /*    Forms Routes    */ }
-            <Route component={ Forms } path="/forms/forms" />
-            <Route component={ FormsLayouts } path="/forms/forms-layouts" />
-            <Route component={ InputGroups } path="/forms/input-groups" />
-            <Route component={ Wizard } path="/forms/wizard" />
-            <Route component={ TextMask } path="/forms/text-mask" />
-            <Route component={ Typeahead } path="/forms/typeahead" />
-            <Route component={ Toggles } path="/forms/toggles" />
-            <Route component={ Editor } path="/forms/editor" />
-            <Route component={ DatePicker } path="/forms/date-picker" />
-            <Route component={ Dropzone } path="/forms/dropzone" />
-            <Route component={ Sliders } path="/forms/sliders" />
-            
-            { /*    Graphs Routes   */ }
-            <Route component={ ReCharts } path="/graphs/re-charts" />
-
-            { /*    Tables Routes   */ }
-            <Route component={ Tables } path="/tables/tables" />
-            <Route component={ ExtendedTable } path="/tables/extended-table" />
-            <Route component={ AgGrid } path="/tables/ag-grid" />
-
-            { /*    Apps Routes     */ }
-            <Route component={ AccountEdit } path="/apps/account-edit" />
-            <Route component={ BillingEdit } path="/apps/billing-edit" />
-            <Route component={ Chat } path="/apps/chat" />
-            <Route component={ Clients } path="/apps/clients" />
-            <Route component={ EmailDetails } path="/apps/email-details" />
-            <Route component={ Files } path="/apps/files/:type"/>
-            <Route component={ GalleryGrid } path="/apps/gallery-grid" />
-            <Route component={ GalleryTable } path="/apps/gallery-table" />
-            <Route component={ ImagesResults } path="/apps/images-results" />
-            <Route component={ Inbox } path="/apps/inbox" />
-            <Route component={ NewEmail } path="/apps/new-email" />
-            <Route component={ ProfileDetails } path="/apps/profile-details" />
-            <Route component={ ProfileEdit } path="/apps/profile-edit" />
-            <Route component={ Projects } path="/apps/projects/:type" />
-            <Route component={ SearchResults } path="/apps/search-results" />
-            <Route component={ SessionsEdit } path="/apps/sessions-edit" />
-            <Route component={ SettingsEdit } path="/apps/settings-edit" />
-            <Route component={ Tasks } path="/apps/tasks/:type" />
-            <Route component={ TasksDetails } path="/apps/task-details" />
-            <Route component={ TasksKanban } path="/apps/tasks-kanban" />
-            <Route component={ Users } path="/apps/users/:type" />
-            <Route component={ UsersResults } path="/apps/users-results" />
-            <Route component={ VideosResults } path="/apps/videos-results" />
-
-            { /*    Pages Routes    */ }
-            <Route component={ ComingSoon } path="/pages/coming-soon" />
-            <Route component={ Confirmation } path="/pages/confirmation" />
-            <Route component={ Danger } path="/pages/danger" />
-            <Route component={ Error404 } path="/pages/error-404" />
-            <Route component={ ForgotPassword } path="/pages/forgot-password" />
-            <Route component={ LockScreen } path="/pages/lock-screen" />
-            <Route component={ Login } path="/pages/login" />
-            <Route component={ Register } path="/pages/register" />
-            <Route component={ Success } path="/pages/success" />
-            <Route component={ Timeline } path="/pages/timeline" />
-
-            <Route path='/icons' exact component={Icons} />
-
-            { /*    404    */ }
+            {/*    404    */}
             <Redirect to="/pages/error-404" />
         </Switch>
     );
 };
 
 //------ Custom Layout Parts --------
-export const RoutedNavbars  = () => (
+export const RoutedNavbars = () => (
     <Switch>
-        { /* Other Navbars: */}
-        <Route
-            component={ SidebarANavbar }
-            path="/layouts/sidebar-a"
-        />
-        <Route
-            component={ NavbarOnly.Navbar }
-            path="/layouts/navbar"
-        />
-        <Route
-            component={ SidebarWithNavbar.Navbar }
-            path="/layouts/sidebar-with-navbar"
-        />
-        { /* Default Navbar: */}
-        <Route
-            component={ DefaultNavbar }
-        />
-    </Switch>  
+        {/* Other Navbars: */}
+        <Route component={SidebarANavbar} path="/layouts/sidebar-a" />
+        <Route component={NavbarOnly.Navbar} path="/layouts/navbar" />
+        <Route component={SidebarWithNavbar.Navbar} path="/layouts/sidebar-with-navbar" />
+        {/* Default Navbar: */}
+        <Route component={DefaultNavbar} />
+    </Switch>
 );
 
 export const RoutedSidebars = () => (
     <Switch>
-        { /* Other Sidebars: */}
-        <Route
-            component={ SidebarASidebar }
-            path="/layouts/sidebar-a"
-        />
-        <Route
-            component={ SidebarWithNavbar.Sidebar }
-            path="/layouts/sidebar-with-navbar"
-        />
-        { /* Default Sidebar: */}
-        <Route
-            component={ DefaultSidebar }
-        />
+        {/* Other Sidebars: */}
+        <Route component={SidebarASidebar} path="/layouts/sidebar-a" />
+        <Route component={SidebarWithNavbar.Sidebar} path="/layouts/sidebar-with-navbar" />
+        {/* Default Sidebar: */}
+        <Route component={DefaultSidebar} />
     </Switch>
 );
