@@ -15,6 +15,7 @@ module.exports = {
     mode: 'development',
     entry: {
         app: [path.join(config.srcDir, 'index.js')],
+        appReact18: [path.join(config.srcDir, 'index-react18.js')],
     },
     output: {
         filename: '[name].bundle.js',
