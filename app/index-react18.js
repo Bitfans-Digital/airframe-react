@@ -1,8 +1,8 @@
-import '@babel/polyfill';
-
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import App from './components/App/AppClient-react18';
 
-render(<App />, document.querySelector('#root'));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App />);
