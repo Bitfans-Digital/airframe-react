@@ -1,9 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 
-import {
-    InputGroupAddon as BsInputGroupAddon
-} from 'reactstrap';
+import { InputGroup as BsInputGroupAddon } from 'reactstrap';
 
 const InputGroupAddon = (props) => {
     const { children, ...otherProps } = props;

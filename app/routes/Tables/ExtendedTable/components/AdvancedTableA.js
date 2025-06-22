@@ -5,7 +5,7 @@ import filterFactory, {
   Comparator,
   dateFilter,
 } from "react-bootstrap-table2-filter";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import ToolkitProvider from 'react-bootstrap-table2-toolkit-react18-node20';
 import _ from "lodash";
 import { faker } from "@faker-js/faker";
 import moment from "moment";

@@ -1,7 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import BootstrapTable from "react-bootstrap-table-next";
-import ToolkitProvider from "react-bootstrap-table2-toolkit";
+import ToolkitProvider from 'react-bootstrap-table2-toolkit-react18-node20';
 import { faker } from "@faker-js/faker";
 
 import { CustomSearch } from "./CustomSearch";
