@@ -162,7 +162,7 @@ const MediaObjects = () => (
                 </Media>
                 <Media body>
                   <span className="mt-0 h6 mb-1">
-                    <a href="javascript:;">
+                    <a href="#">
                       {faker.person.firstName()} {faker.person.lastName()}
                     </a>
                   </span>
@@ -190,7 +190,7 @@ const MediaObjects = () => (
                 </Media>
                 <Media body>
                   <span className="mt-0 h6 mb-1">
-                    <a href="javascript:;">
+                    <a href="#">
                       {faker.person.firstName()} {faker.person.lastName()}
                     </a>
                   </span>
@@ -218,7 +218,7 @@ const MediaObjects = () => (
                 </Media>
                 <Media body>
                   <span className="mt-0 h6 mb-1">
-                    <a href="javascript:;">
+                    <a href="#">
                       {faker.person.firstName()} {faker.person.lastName()}
                     </a>
                   </span>
@@ -1642,7 +1642,7 @@ const MediaObjects = () => (
                   <p>
                     {faker.lorem.sentence()}
                     <br />
-                    <a href="javascript:;" className="small text-success">
+                    <a href="#" className="small text-success">
                       {faker.internet.url()}
                     </a>
                   </p>
@@ -1674,7 +1674,7 @@ const MediaObjects = () => (
                   <p>
                     {faker.lorem.sentence()}
                     <br />
-                    <a href="javascript:;" className="small text-success">
+                    <a href="#" className="small text-success">
                       {faker.internet.url()}
                     </a>
                   </p>
@@ -1706,7 +1706,7 @@ const MediaObjects = () => (
                   <p>
                     {faker.lorem.sentence()}
                     <br />
-                    <a href="javascript:;" className="small text-success">
+                    <a href="#" className="small text-success">
                       {faker.internet.url()}
                     </a>
                   </p>
